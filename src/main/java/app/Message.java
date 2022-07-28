@@ -1,4 +1,4 @@
-package main.webapp;
+package app;
 
 public class Message {
 
