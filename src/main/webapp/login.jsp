@@ -11,6 +11,7 @@
 <body>
 <div class="wrapper">
     <div class="contacts">
+        <h1 class="contacts__header">Contacts list</h1>
         <div class="contacts__items"> MAIN CHAT
         </div>
         <div class="contacts__items"> Friends
@@ -18,7 +19,8 @@
     </div>
     <div class="chat">
         <div class='chat-messages'>
-            <div class="chat-messages__message"></div>
+            <div class="chat-messages__message-me">HELLO WORLD. THE TEST MESSAGE FROM ME</div>
+            <div class="chat-messages__message-others">HELLO WORLD. THE TEST MESSAGE FROM OTHER CONTACTS</div>
         </div>
         <div class='chat-input'>
             <input type='text' class='chat-form__input' placeholder='Введите сообщение' name="message" maxlength="1000">

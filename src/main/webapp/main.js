@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded",function (){
     }
     socket.onmessage=function (event){
 
-        $('.chat-messages').append("<div class='chat-messages__message'>"+event.data+"</div>");
+        $('.chat-messages').append("<div class='chat-messages__message-me'>"+event.data+"</div>");
     }
     socket.onclose=function (event){
         alert("Connection was close");
@@ -19,17 +19,17 @@ document.addEventListener("DOMContentLoaded",function (){
     }
     function handlerButton (){
         let message = $('input.chat-form__input').val();
-        socket.send(message);
+        if (message!=''){socket.send(message);
         $('input.chat-form__input').val('');
-        return false;
+        return false;} else return false;
     }
     $('input.chat-form__submit').bind("click", handlerButton);
     $('html').keydown(function (e){
        if (e.keyCode==13){
            let message = $('input.chat-form__input').val();
-           socket.send(message);
+           if (message!='') {socket.send(message);
            $('input.chat-form__input').val('');
-           return false;
+           return false;} else return false;
        }
     });
 });
