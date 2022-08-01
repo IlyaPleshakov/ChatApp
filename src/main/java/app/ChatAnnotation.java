@@ -19,11 +19,12 @@ public class ChatAnnotation {
     private final String nickname;
     private Session session;
     public ChatAnnotation() {
+
         nickname = "guest№"+ connectionIds.getAndIncrement();
     }
 
     @OnOpen
-    public void start(Session session) {
+    public void open(Session session) {
         this.session = session;
         connections.add(this);
         String message = String.format("* %s %s", nickname, "has joined.");
@@ -32,7 +33,7 @@ public class ChatAnnotation {
 
 
     @OnClose
-    public void end() {
+    public void close() {
         connections.remove(this);
         String message = String.format("* %s %s",
                 nickname, "has disconnected.");
