@@ -18,6 +18,10 @@
         </div>
     </div>
     <div class="chat">
+        <div class="chat-header">
+            <button class="chat-header__button" type="submit">Contacts list</button>
+            <button class="chat-header__button" type="submit">Exit from chatroom</button>
+        </div>
         <div class='chat-messages'>
             <div class="chat-messages__message-me">HELLO WORLD. THE TEST MESSAGE FROM ME</div>
             <div class="chat-messages__message-others">HELLO WORLD. THE TEST MESSAGE FROM OTHER CONTACTS</div>
