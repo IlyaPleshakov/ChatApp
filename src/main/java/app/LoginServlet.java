@@ -18,16 +18,12 @@ public class LoginServlet extends HttpServlet {
     boolean loginStatus=false;
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer id = Integer.parseInt(req.getParameter("id"));
+        String password = req.getParameter("password");
         resp.setContentType("text/html");
         String name = req.getParameter("login");
-        if (name!=null) {
-            if (!UsersDAO.users.add(name)){
-                loginStatus=true;
-            }
-            else loginStatus=false;
-        }
-        else resp.sendRedirect("/ChatApp_war_exploded/error.jsp");
+        //resp.sendRedirect("/ChatApp_war_exploded/error.jsp");
         if (!loginStatus)
         {
             HttpSession httpSession = req.getSession();
@@ -39,13 +35,9 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
-    }
-
-    @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+
     }
 
     @Override

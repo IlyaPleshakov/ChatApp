@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 @ServerEndpoint(value = "/websocket/chat")
 public class ChatAnnotation {
     private static final Set<ChatAnnotation> connections =
