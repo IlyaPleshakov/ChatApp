@@ -33,6 +33,12 @@
       <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/jakarta.security.enterprise/jakarta.security.enterprise-api -->
+    <dependency>
+      <groupId>jakarta.security.enterprise</groupId>
+      <artifactId>jakarta.security.enterprise-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/jakarta.websocket/jakarta.websocket-api -->
     <dependency>

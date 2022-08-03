@@ -20,7 +20,7 @@
 
     <div class="register-form">
         <h2 class="login-form__head">Register new chatroom</h2>
-        <form action="${pageContext.request.contextPath}/loginServlet" method="get">
+        <form action="${pageContext.request.contextPath}/registerServlet" method="get">
             <input type="text" name="password">
             <input type="text" name="mail" placeholder="mail@mail.ru">
             <input type="submit" name="register-button" value="Register" />

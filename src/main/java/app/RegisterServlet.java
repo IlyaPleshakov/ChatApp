@@ -11,8 +11,8 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String mail = req.getParameter("mail");
-        String password = req.getParameter("password");
-        ChatRoomsDAO.ChatRooms.put(mail,password);
+        //String mail = req.getParameter("mail");
+        //String password = req.getParameter("password");
+        //ChatRoomsDAO.ChatRooms.put(mail,password);
     }
 }

@@ -19,18 +19,17 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer id = Integer.parseInt(req.getParameter("id"));
-        String password = req.getParameter("password");
+
         resp.setContentType("text/html");
-        String name = req.getParameter("login");
         //resp.sendRedirect("/ChatApp_war_exploded/error.jsp");
+
         if (!loginStatus)
         {
-            HttpSession httpSession = req.getSession();
-            resp.sendRedirect("/ChatApp_war_exploded/login.jsp");
+            //HttpSession httpSession = req.getSession();
+            resp.sendRedirect("./login.jsp");
         }
         else {
-            resp.sendRedirect("/ChatApp_war_exploded/error.jsp");
+            resp.sendRedirect("./error.jsp");
         }
     }
 
