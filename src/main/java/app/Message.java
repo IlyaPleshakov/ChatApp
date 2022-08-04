@@ -2,23 +2,23 @@ package app;
 
 public class Message {
 
+    private String id;
     private String text;
-    private String author;
     @Override
     public String toString() {
-        return author+":"+text;
+        return id+":"+text;
     }
 
     public String getAuthor() {
-        return author;
+        return id;
     }
 
     public String getText() {
         return text;
     }
 
-    public Message(String text, String author){
-        this.author=author;
+    public Message(String text, String id){
+        this.id=id;
         this.text=text;
     }
 }

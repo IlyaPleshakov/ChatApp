@@ -24,7 +24,7 @@
         </div>
         <div class='chat-messages'>
             <div class="chat-messages__message-me">HELLO WORLD. THE TEST MESSAGE FROM ME</div>
-            <div class="chat-messages__message-others">HELLO WORLD. THE TEST MESSAGE FROM OTHER CONTACTS</div>
+            <div class="chat-messages__message-others">HELLO WORLD. THE TEST MESSAGE FROM OTHER LISTS</div>
         </div>
         <div class='chat-input'>
             <input type='text' class='chat-form__input' placeholder='Введите сообщение' name="message" maxlength="1000">
