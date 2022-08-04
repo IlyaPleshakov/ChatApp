@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="style.css">
     <title>ChatApp</title>
     <script src="jquery-3.6.0.min.js"></script>
-    <!--<script src="main.js"></script> -->
+    <script src="main.js"></script>
 </head>
 <body>
 <div class="wrapper_index">
@@ -22,7 +22,6 @@
         <h2 class="login-form__head">Register new chatroom</h2>
         <form action="${pageContext.request.contextPath}/registerServlet" method="get">
             <input type="text" name="password">
-            <input type="text" name="mail" placeholder="mail@mail.ru">
             <input type="submit" name="register-button" value="Register" />
         </form>
     </div>
