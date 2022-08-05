@@ -10,17 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c63a6143-544e-4d7a-92bc-0d2b5b95f4b5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/ChatAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ChatAnnotation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ChatApp/WEB-INF/classes/app/ChatAnnotation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatApp/WEB-INF/classes/app/ChatAnnotation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ChatApp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatApp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ChatApp/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatApp/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ChatApp/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ChatApp/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/ChatAnnotation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/ChatAnnotation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +181,7 @@
       <workItem from="1659532703625" duration="117000" />
       <workItem from="1659532832968" duration="2363000" />
       <workItem from="1659615609518" duration="16174000" />
-      <workItem from="1659700500668" duration="6612000" />
+      <workItem from="1659700500668" duration="7462000" />
     </task>
     <servers />
   </component>
