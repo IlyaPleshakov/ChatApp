@@ -1,0 +1,53 @@
+[33mcommit 64b146d826fcb170d15e8e584a816427f25a8596[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Ilya Pleshakov <ilyapl1994@mail.ru>
+Date:   Thu Aug 4 17:55:14 2022 +0300
+
+    Changed main.js - modifyallocation input text messages, changed - ChatAnnotation - set->map collection of websocket connections, add possibility  enter to #1 ChatRoom
+
+[33mcommit d85b7191c118f6051990e25fc8ba969c128f9d30[m
+Author: Ilya Pleshakov <ilyapl1994@mail.ru>
+Date:   Wed Aug 3 17:38:10 2022 +0300
+
+    change servlets
+
+[33mcommit 920c18c37db380e8e6b090149461aa01703dd046[m
+Author: IlyaPleshakov <ilyapl1994@mail.ru>
+Date:   Tue Aug 2 23:34:38 2022 +0300
+
+    Change login form, add register form, add registerServlet
+
+[33mcommit f1d6dbff83f0377a2918186eddfda13230499b83[m
+Author: IlyaPleshakov <87338398+IlyaPleshakov@users.noreply.github.com>
+Date:   Tue Aug 2 19:29:46 2022 +0300
+
+    Delete .idea directory
+
+[33mcommit 7c67cbe419bfa88eccbf33b21489747b6cb670f1[m
+Author: Ilya Pleshakov <ilyapl1994@mail.ru>
+Date:   Tue Aug 2 17:48:54 2022 +0300
+
+    Add buttons - exit from chat, show contacts list
+
+[33mcommit e7542f4da7078330522bdc0c2ebbf06e3093be76[m
+Author: IlyaPleshakov <ilyapl1994@mail.ru>
+Date:   Mon Aug 1 23:47:04 2022 +0300
+
+    Modify style.css - add styles for messages_me messages_others, modify main.js
+
+[33mcommit 29d7f16e2e3ee48db248f00a042d72b2ef009dd0[m
+Author: Ilya Pleshakov <ilyapl1994@mail.ru>
+Date:   Mon Aug 1 15:54:23 2022 +0300
+
+    Modifying style.css, main.js
+
+[33mcommit 2899fc23bb4d636e9a0b8ae21e630b5e703f4243[m
+Author: Ilya Pleshakov <ilyapl1994@mail.ru>
+Date:   Thu Jul 28 16:01:29 2022 +0300
+
+    Add class ChatAnnotation from Apache docs for Websockets
+
+[33mcommit 4c5557cf8485d044bc3152521ef8fd987198c9b8[m[33m ([m[1;31morigin/second[m[33m, [m[1;32msecond[m[33m)[m
+Author: Ilya <ilyapl1994@mail.ru>
+Date:   Wed Jul 27 14:44:36 2022 +0300
+
+    First commit

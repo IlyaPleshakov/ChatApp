@@ -10,8 +10,7 @@ import jakarta.websocket.Session;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -23,6 +22,7 @@ public class ChatAnnotation {
     private static final AtomicInteger connectionIds = new AtomicInteger(0);
     private final String nickname;
     private Session session;
+    String MSG_USER_LIST  = "{\"type\":\"userslist\",\"users\":%s}";
     public ChatAnnotation() {
 
         nickname = "guest№"+ connectionIds.getAndIncrement();
@@ -38,8 +38,22 @@ public class ChatAnnotation {
             webSocketSet.add(this);
             connections.put(roomNum, webSocketSet);
         }
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        CopyOnWriteArraySet<String> setUsers = new CopyOnWriteArraySet<>();
+        Iterator<ChatAnnotation> iterator = connections.get(roomNum).iterator();
+
+        while (iterator.hasNext())
+        {
+            setUsers.add(iterator.next().nickname);
+        }
+        String listUsers=gson.toJson(setUsers);
+        String usersmessage=String.format(MSG_USER_LIST, listUsers);
+        System.out.println(usersmessage);
         String message = String.format("* %s %s", nickname, "has joined.");
         broadcast(roomNum, message);
+        broadcast(roomNum,usersmessage);
+
     }
 
 
@@ -74,7 +88,7 @@ public class ChatAnnotation {
     }
 
 
-    private static void broadcast(@PathParam("roomNum") String roomNum,String msg) {
+    private static void broadcast(String roomNum,String msg) {
         CopyOnWriteArraySet<ChatAnnotation> set = connections.get(roomNum);
         for (ChatAnnotation client : set) {
             try {
