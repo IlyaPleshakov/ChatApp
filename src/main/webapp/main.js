@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded",function (){
     let guestId=Math.floor(Math.random()*1000);
     var JSONmsg={
         id: guestId,
-        message:getTextInputForm()
+        message:getTextInputForm(),
+        type:"message"
     }
     let socket = new WebSocket("ws://localhost:8080/ChatApp_war_exploded/websocket/chat/"+1);
 
@@ -25,17 +26,25 @@ document.addEventListener("DOMContentLoaded",function (){
 
         try {
             let msg = JSON.parse(event.data);
-            if (msg.message!='') {
+            if (msg.message!='' && msg.type==="message") {
                 if (msg.id === guestId) {
                     $('.chat-messages').append("<div class='chat-messages__message-me'>" + msg.message + "</div>");
                 } else {
                     $('.chat-messages').append("<div class='chat-messages__message-others'>" + msg.message + "</div>");
                 }
             }
+            else if (msg.type==="userslist"){
+                $('.contacts__items').remove();
+                for (var i=0; i<msg.users.length;i++) {
+
+                    $('.contacts').append("<div class='contacts__items'>" + msg.users[i]+ "</div>");
+                }
+            }
+
 
         }
         catch (e) {
-            $('.chat-messages').append("<div class='chat-messages__message-me'>" + event.data + "</div>");
+            $('.chat-messages').append("<div class='chat-messages__message-others'>" + event.data + "</div>");
         }
     }
     socket.onclose=function (event){
@@ -48,7 +57,8 @@ document.addEventListener("DOMContentLoaded",function (){
         let text = getTextInputForm();
         let JSONmsg={
             id: guestId,
-            message:text
+            message:text,
+            type:"message"
         }
         let msg=JSON.stringify(JSONmsg);
         if (text!=''){
@@ -62,7 +72,8 @@ document.addEventListener("DOMContentLoaded",function (){
            let text = getTextInputForm();
            let JSONmsg={
                id: guestId,
-               message:text
+               message:text,
+               type:"message"
            }
            let msg=JSON.stringify(JSONmsg);
            if (text!='') {
