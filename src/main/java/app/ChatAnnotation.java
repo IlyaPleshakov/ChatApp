@@ -2,35 +2,36 @@ package app;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import jakarta.websocket.OnClose;
-import jakarta.websocket.OnError;
-import jakarta.websocket.OnMessage;
-import jakarta.websocket.OnOpen;
-import jakarta.websocket.Session;
+import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 
 @ServerEndpoint(value = "/websocket/chat/{roomNum}")
 public class ChatAnnotation {
-    private static final Map<String,CopyOnWriteArraySet <ChatAnnotation>> connections =
+    private static Logger log = Logger.getLogger(ChatAnnotation.class.getName());
+    private static final Map<String, CopyOnWriteArraySet<ChatAnnotation>> connections =
             new HashMap<>();
     private static final AtomicInteger connectionIds = new AtomicInteger(0);
-    private final String nickname;
+    private String nickname;
     private Session session;
-    String MSG_USER_LIST  = "{\"type\":\"userslist\",\"users\":%s}";
+
+    private static final String MSG_USER_LIST = "{\"type\":\"userslist\",\"users\":%s}";
+
     public ChatAnnotation() {
 
-        nickname = "guest№"+ connectionIds.getAndIncrement();
     }
 
     @OnOpen
     public void open(@PathParam("roomNum") String roomNum, Session session) {
         this.session = session;
+        nickname=session.getUserPrincipal().getName();
         if (connections.containsKey(roomNum)) {
             connections.get(roomNum).add(this);
         } else {
@@ -38,21 +39,10 @@ public class ChatAnnotation {
             webSocketSet.add(this);
             connections.put(roomNum, webSocketSet);
         }
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        CopyOnWriteArraySet<String> setUsers = new CopyOnWriteArraySet<>();
-        Iterator<ChatAnnotation> iterator = connections.get(roomNum).iterator();
-
-        while (iterator.hasNext())
-        {
-            setUsers.add(iterator.next().nickname);
-        }
-        String listUsers=gson.toJson(setUsers);
-        String usersmessage=String.format(MSG_USER_LIST, listUsers);
-        System.out.println(usersmessage);
-        String message = String.format("* %s %s", nickname, "has joined.");
+        String message = String.format("* %s %s",nickname, "has joined.");
+        String usersmessage = getMSG_USER_LIST(roomNum);
         broadcast(roomNum, message);
-        broadcast(roomNum,usersmessage);
+        broadcast(roomNum, usersmessage);
 
     }
 
@@ -64,6 +54,7 @@ public class ChatAnnotation {
         String message = String.format("* %s has disconnected from chat room N%s",
                 nickname, roomNum);
         broadcast(roomNum, message);
+
     }
 
 
@@ -72,42 +63,56 @@ public class ChatAnnotation {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         Message msg = gson.fromJson(message, Message.class);
-        // Never trust the client
-        System.out.println("MESSAGE="+message);
-        String filteredMessage = String.format("%s: %s",
-                nickname, message);
         broadcast(roomNum, message);
     }
 
 
-
-
     @OnError
     public void onError(Throwable t) throws Throwable {
-        //log.error("Chat Error: " + t.toString(), t);
+
+        log.info("Chat Error: " + t.toString());
     }
 
 
-    private static void broadcast(String roomNum,String msg) {
+    private static void broadcast(String roomNum, String msg) {
         CopyOnWriteArraySet<ChatAnnotation> set = connections.get(roomNum);
         for (ChatAnnotation client : set) {
             try {
                 synchronized (client) {
                     client.session.getBasicRemote().sendText(msg);
+                    log.info("message delivered");
                 }
             } catch (IOException e) {
-                //log.debug("Chat Error: Failed to send message to client", e);
+                log.info("Chat Error: Failed to send message to client");
                 connections.remove(client);
                 try {
                     client.session.close();
                 } catch (IOException e1) {
-                    // Ignore
+                    log.info("Wrong closing WS session");
                 }
                 String message = String.format("* %s %s",
                         client.nickname, "has been disconnected.");
-                broadcast(roomNum,message);
+                broadcast(roomNum, message);
             }
         }
     }
+
+
+    private static String getMSG_USER_LIST(String roomNum) {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        CopyOnWriteArraySet<String> setUsers = new CopyOnWriteArraySet<>();
+        Iterator<ChatAnnotation> iterator = connections.get(roomNum).iterator();
+
+        while (iterator.hasNext()) {
+            setUsers.add(iterator.next().nickname);
+        }
+        String listUsers = gson.toJson(setUsers);
+        String usersmessage = String.format(MSG_USER_LIST, listUsers);
+        System.out.println("users="+usersmessage);
+
+        return usersmessage;
+    }
+
 
 }

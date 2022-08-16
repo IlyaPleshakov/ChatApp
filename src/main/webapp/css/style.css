@@ -1,7 +1,8 @@
 body{
-    background-image: url(17545.jpg);
+    background-image: url(../17545.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    height: 100%;
 }
 .wrapper{
     display: flex;
@@ -46,6 +47,9 @@ body{
     text-shadow: 3px 3px 10px rgba(63,84,142,0.61);
     margin-left: auto;
     margin-right: auto;
+}
+.contacts__nick{
+align-items: center;
 }
 .chat {
     display: flex;
